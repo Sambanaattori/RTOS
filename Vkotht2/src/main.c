@@ -29,29 +29,18 @@ K_THREAD_DEFINE(green_thread,STACKSIZE,green_led_task,NULL,NULL,NULL,PRIORITY,0,
 void yellow_led_task(void *, void *, void*);
 K_THREAD_DEFINE(yellow_thread,STACKSIZE,yellow_led_task,NULL,NULL,NULL,PRIORITY,0,0);
 
-// Button interrupt handler
-void button_0_handler(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
-{
-        printk("Button pressed\n");
-        // Jos ollaan jo pause-tilassa
-        //      otetaan nykyinen tila talteen
-        // Muutoin
-        //      vaihdetaan tila 4 eli pause
-        if (tila == 1) {
-                vanha_tila = 1;
-                tila = 4;
-        } else if (tila == 2) {
-                vanha_tila = 2;
-                tila = 4;
-        } else if (tila == 3) {
-                vanha_tila = 3;
-                tila = 4;
-        } else if (tila == 4) {
-                tila = vanha_tila;
-        }
+// Button interrupt handler TULOSSA
+/*
+void button_0_handler(const struct device *dev, struct gpio_callback *cb, uint32_t pins){
+	
+	printk("Button pressed\n");
+    // Jos ollaan jo pause-tilassa
+    //      otetaan nykyinen tila talteen
+    // Muutoin        //      vaihdetaan tila 4 eli pause
+    }
+}*/
 
-}
-
+// Tällä tavoittelen yhtä pistettä mutta aion toteuttaa napin pause toiminnon vielä myöhemmin
 // Main program
 int main(void)
 {
@@ -62,7 +51,6 @@ int main(void)
                 return 0;
         }
 
-	//init state
 	tila = 1;
 
 	return 0;
