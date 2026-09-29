@@ -4,12 +4,6 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/uart.h>
 
-/****************************
- * Remember to add line:
- * CONFIG_HEAP_MEM_POOL_SIZE=1024
- * to prj.conf
- ****************************/
-
 // Thread initializations
 #define STACKSIZE 500
 #define PRIORITY 5
